@@ -1,0 +1,31 @@
+{
+    "name": "@filiphsandstrom/shopify-serve",
+    "version": "1.0.0",
+    "description": "Run Shopify themes locally.",
+    "main": "./dist/server.js",
+    "bin": {
+        "shopify-serve": "./dist/server.js"
+    },
+    "author": "Filiph Sandström <filiph.sandstrom@filfatstudios.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "ts-node --transpile-only --project ./src/tsconfig.json --files ./src/Server.ts",
+        "dev": "nodemon --watch src -e ts,js,json --exec 'ts-node --transpile-only --project ./src/tsconfig.json --files ./src/Server.ts'"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "liquidjs": "^9.23.1",
+        "node-sass": "^5.0.0",
+        "yargs": "^17.0.0-candidate.3"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.11",
+        "@types/node": "^14.14.31",
+        "@types/node-sass": "^4.11.1",
+        "husky": "^5.1.0",
+        "jest": "^26.6.3",
+        "nodemon": "^2.0.7",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.1.5"
+    }
+}
