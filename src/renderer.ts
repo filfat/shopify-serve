@@ -4,6 +4,7 @@ import path from 'path';
 
 const renderer = async (src: string, data?: any) => {
     const engine = new Liquid({
+        cache: false,
         root: path.resolve(src, '../../', 'snippets'), // TODO
         extname: '.liquid'
     });
@@ -41,7 +42,45 @@ const renderer = async (src: string, data?: any) => {
         .replaceAll('{{ accent_family.weight }}', '600')
         .replaceAll('{{ accent_family_bold.weight | default: 700 }}', '700')
         .replaceAll('{{ accent_family.style }}', 'none');
-    return await engine.parseAndRender(theme, data);
+    return await engine.parseAndRender(theme, {
+        ...data,
+        shop: {
+            name: 'Shopify Development Store'
+        },
+
+        // TODO
+        settings: {
+            color_primary: 'red',
+            color_secondary: 'lime',
+
+            color_body_bg: '#fff',
+            color_header_bg: '#f90000',
+            color_footer_bg: 'purple',
+            color_topbar_bg: 'green',
+
+            color_primary_text: '#000',
+            color_secondary_text: '#000',
+            color_body_text: '#000',
+            color_footer_text: '#fff',
+            color_button_primary_text: 'blue',
+            color_topbar_text: '#fff',
+            color_navigation_text: 'cyan',
+
+            color_borders: '#333',
+            color_footer_social_link: '#000',
+
+            type_base_family: 'open sans',
+            type_header_family: 'open sans',
+            type_accent_family: 'open sans',
+
+            type_base_size: '12px',
+            type_header_size: '14px',
+            type_accent_size: '14px',
+
+            enable_wide_layout: true,
+            enable_bold: false
+        }
+    });
 };
 
 export default renderer;

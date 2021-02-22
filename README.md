@@ -8,3 +8,9 @@ Serve shopify themes for local development
 ```bash
     $ shopify-serve [path]
 ```
+
+## todo
+
+-   [ ] Read from settings_schema
+-   [ ] Handle sections
+-   [ ] Properly support fonts
